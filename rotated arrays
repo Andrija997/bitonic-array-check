@@ -6,8 +6,8 @@ void main() {
 	for (i = 0; i < n; scanf("%d", &array1[i++]));
 	for (i = 0; i < n; scanf("%d", &array2[i++]));
 	int nasao = 1;
-	for (i = 0; i < n; i++) {
-		for (j = 0; j < n; j++) {
+	for (i = 0; i < n && nasao; i++) {
+		for (j = 0; j < n  && nasao; j++) {
 			if (array1[i] == array2[j]) {
 				int k = (i+1) % n , m = (j+1) % n ;
 				while (array1[k] == array2[m] && k != i && m != j) {
@@ -15,11 +15,14 @@ void main() {
 					m = (m + 1) % n;
 				}
 				if (k == i && m == j) {
-					if (k > m) printf("%d", k - m);
-					else printf("%d", n - m + i);
-					break;
+					if (k > m) printf("%d \n", k - m);
+					else if (k<m) printf("%d \n", n - m + k);
+					else printf("%d\n", k - m);
+					nasao = 0;
 				}
 			}
 		}
+		
 	}
+	if (nasao) printf("Not found.");
 }
