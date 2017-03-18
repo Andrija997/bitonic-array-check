@@ -1,15 +1,15 @@
 #include <stdio.h>
 #define MAX 100
 void main() {
-	int array1[MAX], array2[MAX], i, j, n,m;
-	scanf("%d", &n);
-	for (i = 0; i < n; scanf("%d", &array1[i++]));
-	for (i = 0; i < n; scanf("%d", &array2[i++]));
+	int array1[MAX], array2[MAX], i, j, n, m;
+	scanf_s("%d", &n);
+	for (i = 0; i < n; scanf_s("%d", &array1[i++]));
+	for (i = 0; i < n; scanf_s("%d", &array2[i++]));
 	int nasao = 1;
-	for (i = 0; i < n && nasao; i++) {
-		for (j = 0; j < n  && nasao; j++) {
+	i = 0;
+		for (j = 0; j < n && nasao; j++) {
 			if (array1[i] == array2[j]) {
-				int k = (i+1) % n , m = (j+1) % n ;
+				int k = (i + 1) % n, m = (j + 1) % n;
 				while (array1[k] == array2[m] && k != i && m != j) {
 					k = (k + 1) % n;
 					m = (m + 1) % n;
@@ -22,7 +22,5 @@ void main() {
 				}
 			}
 		}
-		
-	}
-	if (nasao) printf("Not found.");
+	if (nasao) printf("Not found. n");
 }
