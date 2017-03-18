@@ -1,0 +1,17 @@
+#include <stdio.h>
+int main() {
+	int set1=  0 , set2 =  0 , i = 0, x, n,dobar;
+	while (1) {
+		scanf("%d", &x);
+		if (x < 0 || x>15) break;
+		set1 |= 1<<x;
+	}
+	while (1) {
+		scanf("%d", &x);
+		if (x < 0 || x>15) break;
+		set2 |= 1<<x;
+	}
+		if (set1!=set2) printf("los je skup \n");
+		else printf("dobar je skup \n");
+	
+}
