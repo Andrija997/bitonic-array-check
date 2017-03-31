@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MAKS 50
+main() {
+	int numbers[MAKS], i, j, n, max, min, choice;
+	while (1) {
+		printf("N?");
+		scanf("%d", &n);
+		if (n > MAKS || n <= 1) break;
+		printf("\nNiz:");
+		scanf(" %d", &numbers[0]);
+		min = max = numbers[0];
+		for (i = 1; i < n; i++) {
+			scanf("%d", &numbers[i]);
+			if (numbers[i] > max)  max = numbers[i];
+		   if (numbers[i] < min) min = numbers[i];
+		}
+		printf("Rastuci/Opadajuci? (0/1)?");
+		scanf("%d", &choice);
+		if (choice) {
+			for (i = 0; i < n - 1; i++) 
+				for (j = i + 1; j < n; j++) {
+					if (numbers[i] < numbers[j]) {
+						int tmp = numbers[i];
+						numbers[i] = numbers[j];
+						numbers[j] = tmp;
+					 }
+				}
+		}
+		else for (i = 0; i < n - 1; i++)
+			    for (j = i + 1; j < n; j++) {
+			     	if (numbers[i] > numbers[j]) {
+				    	int tmp = numbers[i];
+				    	numbers[i] = numbers[j];
+				    	numbers[j] = tmp;
+				}
+			}  printf("\n");
+		for (i = 0; i < n; printf(" %d ",*(numbers + i++)));  printf("\n");
+		for (j = 0, i = 0; i < n; i++) {
+			if (numbers[i] != max && numbers[i] != min) { numbers[j++] = numbers[i]; printf("%d ", numbers[j - 1]); }
+		}
+		printf_s("\nDifference: %d \n", abs(max - min));
+	}
+}
